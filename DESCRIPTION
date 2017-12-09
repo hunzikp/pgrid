@@ -1,0 +1,17 @@
+Package: pgrid
+Type: Package
+Title: pgrid - easy access to PRIO GRID raster data
+Version: 0.1.0.9000
+Author: Philipp Hunziker
+Maintainer: Philipp Hunziker <hunzikp@gmail.com>
+Description: Formats the PRIO GRID data as rasters and returns meta data.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    Rcpp (>= 0.12.12),
+    data.table,
+    velox,
+    tools
+LinkingTo: Rcpp
+RoxygenNote: 5.0.1
