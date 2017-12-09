@@ -66,7 +66,7 @@ Note that `getPrioRaster` returns a list with two elements: (1) the actual raste
 
 ```{r}
 ## Get raster data
-prio.ls <- getPrioRaster(names = c('ttime_mean', 'nlights_calib_mean'), years = 2005:2010)
+prio.ls <- getPrioRaster(names = c('ttime_mean', 'nlights_mean'), years = 2005:2010)
 prio.vx <- prio.ls$raster
 meta.df <- prio.ls$meta
 ```
@@ -92,7 +92,7 @@ nightPalette <- colorRampPalette(c("black",
                                    rgb(255,215,0,maxColorValue=255), 
                                    "white"), bias = 0.5)
 nightTheme <- rasterTheme(region = nightPalette(20))
-levelplot(prio.stk[[meta.df$band[meta.df$name == 'nlights_calib_mean' & meta.df$year %in% c(2005,2010)]]], 
+levelplot(prio.stk[[meta.df$band[meta.df$name == 'nlights_mean' & meta.df$year %in% c(2005,2010)]]], 
           maxpixels = 720*360, 
           par.settings = nightTheme)
 ```

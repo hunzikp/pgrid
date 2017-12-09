@@ -86,7 +86,7 @@ Note that `getPrioRaster` returns a list with two elements: (1) the
 actual raster data, and (2) a data frame containing meta data.
 
     ## Get raster data
-    prio.ls <- getPrioRaster(names = c('ttime_mean', 'nlights_calib_mean'), years = 2005:2010)
+    prio.ls <- getPrioRaster(names = c('ttime_mean', 'nlights_mean'), years = 2005:2010)
     prio.vx <- prio.ls$raster
     meta.df <- prio.ls$meta
 
@@ -95,13 +95,13 @@ The meta data frame links the requested variables to the raster bands:
     ## Show meta data
     head(meta.df)
 
-    ##                 name year band
-    ## 1 nlights_calib_mean 2005    1
-    ## 2 nlights_calib_mean 2006    2
-    ## 3 nlights_calib_mean 2007    3
-    ## 4 nlights_calib_mean 2008    4
-    ## 5 nlights_calib_mean 2009    5
-    ## 6 nlights_calib_mean 2010    6
+    ##           name year band
+    ## 1 nlights_mean 2005    1
+    ## 2 nlights_mean 2006    2
+    ## 3 nlights_mean 2007    3
+    ## 4 nlights_mean 2008    4
+    ## 5 nlights_mean 2009    5
+    ## 6 nlights_mean 2010    6
 
 The raster data is returned as a [VeloxRaster
 object](https://github.com/hunzikp/velox). If we want to plot it, we can
@@ -120,7 +120,7 @@ plotting.
                                        rgb(255,215,0,maxColorValue=255), 
                                        "white"), bias = 0.5)
     nightTheme <- rasterTheme(region = nightPalette(20))
-    levelplot(prio.stk[[meta.df$band[meta.df$name == 'nlights_calib_mean' & meta.df$year %in% c(2005,2010)]]], 
+    levelplot(prio.stk[[meta.df$band[meta.df$name == 'nlights_mean' & meta.df$year %in% c(2005,2010)]]], 
               maxpixels = 720*360, 
               par.settings = nightTheme)
 
