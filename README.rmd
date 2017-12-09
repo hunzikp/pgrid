@@ -2,14 +2,13 @@
 title: "pgrid: Access PRIO GRID raster data in R"
 author: "Philipp Hunziker"
 date: "December 9, 2017"
-output: md_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# pgrid: Access PRIO GRID raster data in R
 
 The pgrid package allows conveniently creating raster data sets (more specifically: [VeloxRaster objects](https://github.com/hunzikp/velox)) from the PRIO GRID raw data as distributed at <http://grid.prio.org>. 
 
