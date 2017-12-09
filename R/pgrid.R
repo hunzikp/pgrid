@@ -1,3 +1,12 @@
+#' This is data to be included in my package
+#'
+#' @name priogrid.df
+#' @docType data
+#' @author PRIO GRID
+#' @references \url{http://grid.prio.org}
+#' @keywords PRIO GRID variable description
+NULL
+
 
 checkDataPath <- function(path, type = c('static', 'yearly')) {
 
@@ -11,7 +20,7 @@ checkDataPath <- function(path, type = c('static', 'yearly')) {
 
   type <- match.arg(type)
   if (type == 'static') {
-    staticHeader <- as.character(read.csv(file = path, header = FALSE, nrows = 1, stringsAsFactors = FALSE)[1,])
+    staticHeader <- as.character(utils::read.csv(file = path, header = FALSE, nrows = 1, stringsAsFactors = FALSE)[1,])
     if (!('gid' %in% staticHeader)) {
       return(FALSE)
     }
@@ -159,7 +168,9 @@ getVarNames <- function(type = c('static', 'yearly'), details = FALSE) {
   }
 
   if (details) {
-    data(priogrid)
+    prio.env <- new.env()
+    utils::data('priogrid', envir = prio.env)
+    priogrid.df <- get('priogrid.df', envir = prio.env)
     out <- merge(x = out, y = priogrid.df, all.x = TRUE, all.y = FALSE, sort = FALSE)
     out <- out[order(out$id),]
   }
@@ -242,6 +253,8 @@ getAvailYears <- function(year, value) {
 #' @export
 #' @useDynLib pgrid
 #' @importFrom Rcpp evalCpp
+#' @importFrom utils read.csv
+#' @importFrom utils data
 getPrioRaster <- function(names, years=c()) {
 
   ## Get yearly variables
